@@ -1,0 +1,22 @@
+{
+    "name": "clp-pakcs",
+    "version": "1.0.0",
+    "author": "Michael Hanus <mh@informatik.uni-kiel.de>",
+    "synopsis": "CLP libraries for PAKCS",
+    "category": [ "Constraints" ],
+    "dependencies": { },
+    "exportedModules": [ "CLP.FD", "CLP.R" ],
+    "compilerCompatibility": {
+        "pakcs": ">= 2.0.0"
+    },
+    "testsuite": {
+        "src-dir": "examples",
+        "modules": [ "Mortgage", "SMM" ]
+    },
+    "license": "BSD-3-Clause",
+    "licenseFile": "LICENSE",
+    "source": {
+        "git": "https://git.ps.informatik.uni-kiel.de/curry-packages/clp-pakcs.git",
+        "tag": "$version"
+    }
+}
