@@ -4,7 +4,9 @@
     "author": "Michael Hanus <mh@informatik.uni-kiel.de>",
     "synopsis": "CLP libraries for PAKCS",
     "category": [ "Constraints" ],
-    "dependencies": { },
+    "dependencies": {
+        "base": ">= 1.0.0, < 2.0.0"
+    },
     "exportedModules": [ "CLP.FD", "CLP.R" ],
     "compilerCompatibility": {
         "pakcs": ">= 2.0.0"

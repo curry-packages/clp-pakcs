@@ -60,7 +60,7 @@ instance Num FDExpr where
 
   signum _ = error "signum undefined for FD constraints"
 
-  fromInteger x = fd x
+  fromInt x = fd x
 
 --- Represent an integer value as an FD expression.
 fd :: Int -> FDExpr

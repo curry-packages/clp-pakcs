@@ -45,12 +45,12 @@ instance Num CFloat where
            | x == 0    = 0
            | otherwise = -1
 
-  fromInteger x = i2f x
+  fromInt x = i2f x
 
 instance Fractional CFloat where
   x / y = x /. y
 
-  fromRational x = CF x
+  fromFloat x = CF x
 
 --- Addition on floats in arithmetic constraints.
 
