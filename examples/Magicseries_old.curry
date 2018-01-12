@@ -1,26 +1,24 @@
-----------------------------------------------------------------------------
---- Computing magic series.
---- A series [a_0,a_1,....,a_(n-1)] is called magic iff there are
---- a_i occurrences of i in this series, for all i=1,...,n-1
----
---- Adapted from an example of the TOY(FD) distribution.
-----------------------------------------------------------------------------
+-------------------------------------------------------------------------------------
+-- Computing magic series.
+-- A series [a_0,a_1,....,a_(n-1)] is called magic iff there are s_i occurrences
+-- of i in this series, for all i=1,...,n-1
+--
+-- Adapted from an example of the TOY(FD) distribution.
 
-import CLP.FD
+import CLPFD
 
--- Compute a magic series of length n:
 magic :: Int -> [Int]
-magic n =
- let vs = take n (domain 0 (n-1))  -- FD variables
-     is = map fd (take n [0..])   -- FD constants: indices of elements
-  in solveFD [FirstFail] vs $
-       constrain vs vs is /\
-       sum vs Equ (fd n) /\
-       scalarProduct is vs Equ (fd n)
+magic n | take n (generateFD n) =:= l &
+          constrain l l 0 cs & sum l (=#) n & scalarProduct cs l (=#) n &
+          labeling [FirstFail] l
+        = l
+  where l,cs free
 
-constrain :: [FDExpr] -> [FDExpr] -> [FDExpr] -> FDConstr
-constrain []     _  _      = true
-constrain (x:xs) vs (i:is) = count i vs Equ x /\ constrain xs vs is
+generateFD n | n ># 0 & domain [x] 0 (n-1) = x : generateFD n  where x free
+
+constrain [] _ _ [] = True
+constrain (x:xs) l i (j:s2) = i=:=j & count i l (=#) x & constrain xs l (i+1) s2
+
 
 magicfrom :: Int -> [[Int]]
 magicfrom n = magic n : magicfrom (n+1)
