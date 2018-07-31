@@ -8,7 +8,7 @@
 {-# OPTIONS_CYMAKE -Wno-incomplete-patterns #-}
 
 import CLP.FD
-import List(transpose)
+import Data.List (transpose)
 
 -- Solving a Su Doku puzzle represented as a matrix of numbers (possibly free
 -- variables):
@@ -22,7 +22,7 @@ sudoku m = solveFD [FirstFail] (concat m) $
   squares :: [[a]] -> [[a]]
   squares [] = []
   squares (l1:l2:l3:ls) = group3Rows [l1,l2,l3] ++ squares ls
-  
+
   group3Rows l123 = if null (head l123) then [] else
    concatMap (take 3) l123 : group3Rows (map (drop 3) l123)
 

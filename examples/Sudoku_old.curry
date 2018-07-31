@@ -6,8 +6,8 @@
 -----------------------------------------------------------------------------
 
 import CLPFD
-import List(transpose)
-import Constraint(allC)
+import Data.List  (transpose)
+import Constraint (allC)
 
 -- Solving a Su Doku puzzle represented as a matrix of numbers (possibly free
 -- variables):
@@ -23,7 +23,7 @@ sudoku m =
   squares :: [[a]] -> [[a]]
   squares [] = []
   squares (l1:l2:l3:ls) = group3Rows [l1,l2,l3] ++ squares ls
-  
+
   group3Rows l123 = if null (head l123) then [] else
    concatMap (take 3) l123 : group3Rows (map (drop 3) l123)
 
