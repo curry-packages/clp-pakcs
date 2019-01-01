@@ -19,8 +19,7 @@
 --- range of their possible values.
 ---
 --- @author Michael Hanus
---- @version December 2016
---- @category general
+--- @version December 2018
 ------------------------------------------------------------------------------
 
 module CLP.FD
@@ -32,7 +31,7 @@ module CLP.FD
   ) where
 
 import qualified CLPFD as C
-import Findall (allValues, someValue)
+import Control.Findall ( allValues, someValue )
 
 infixl 7 *#
 infixl 6 +#, -#
