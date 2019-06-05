@@ -248,11 +248,15 @@ data FDConstr = FDTrue
 --- of FD variables.
 solveFD :: [Option] -> [FDExpr] -> FDConstr -> [Int]
 solveFD options cvars constr =
-  let domconstr = all (\ (FDVar l u v) -> C.domain [v] l u) (allFDVars constr)
+  let domconstr = all fdvar2domain (cvars ++ allFDVars constr)
       tconstr = trC constr
       allvars = map getFDVal cvars
       labelvars = C.labeling (map trO options) allvars
    in (domconstr & tconstr & labelvars) &> allvars
+ where
+  fdvar2domain e = case e of
+    FDVar l u v -> C.domain [v] l u
+    _           -> True
 
 --- Computes all solutions for the FD variables (second
 --- argument) w.r.t. constraint (third argument), where
