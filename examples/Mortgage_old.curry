@@ -13,6 +13,7 @@ import CLPR
 --     r:  Monthly repayment
 --     b:  Outstanding balance at the end
 
+mortgage :: Float -> Float -> Float -> Float -> Float -> Bool
 mortgage p t ir r b | t >. 0 & t <=. 1  -- lifetime not more than 1 month?
                     =  b =:= p *. (1 +. t *. ir) -. t *. r
 mortgage p t ir r b | t >. 1              -- lifetime more than 1 month?

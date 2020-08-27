@@ -16,4 +16,5 @@ smm =
 
 
 -- Testing:
+testSMM :: Prop
 testSMM = smm -=- [9,5,6,7,1,0,8,2]
