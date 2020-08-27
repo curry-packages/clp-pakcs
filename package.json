@@ -10,7 +10,7 @@
     },
     "exportedModules": [ "CLP.FD", "CLP.R" ],
     "compilerCompatibility": {
-        "pakcs": ">= 2.0.0"
+        "pakcs": ">= 2.0.0, <= 2.2.0"
     },
     "testsuite": {
         "src-dir": "examples",
