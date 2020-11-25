@@ -25,5 +25,6 @@ constrain (x:xs) vs (i:is) = count i vs Equ x /\ constrain xs vs is
 magicfrom :: Int -> [[Int]]
 magicfrom n = magic n : magicfrom (n+1)
 
+main :: [[Int]]
 main = take 3 (magicfrom 7)
 --> [[3,2,1,1,0,0,0],[4,2,1,0,1,0,0,0],[5,2,1,0,0,1,0,0,0]]

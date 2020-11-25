@@ -2,8 +2,7 @@
 --- Library for constraint programming with arithmetic constraints over reals.
 ---
 --- @author Michael Hanus
---- @version December 2016
---- @category general
+--- @version November 2020
 ------------------------------------------------------------------------------
 
 module CLP.R(CFloat,minimumFor,minimize,maximumFor,maximize) where
@@ -35,7 +34,7 @@ instance Num CFloat where
   x - y = x -. y
   x * y = x *. y
 
-  negate (CF x) = CF (negateFloat x)
+  negate (CF x) = CF (negate x)
 
   abs x | x >= 0 = x
         | otherwise = negate x

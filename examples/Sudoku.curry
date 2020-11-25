@@ -7,8 +7,9 @@
 
 {-# OPTIONS_CYMAKE -Wno-incomplete-patterns #-}
 
+import Data.List ( transpose )
+
 import CLP.FD
-import List(transpose)
 
 -- Solving a Su Doku puzzle represented as a matrix of numbers (possibly free
 -- variables):

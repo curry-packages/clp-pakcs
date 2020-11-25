@@ -5,18 +5,18 @@
 --- @version February 2013
 -----------------------------------------------------------------------------
 
+import Data.List ( transpose )
+
 import CLPFD
-import List(transpose)
-import Constraint(allC)
 
 -- Solving a Su Doku puzzle represented as a matrix of numbers (possibly free
 -- variables):
 sudoku :: [[Int]] -> Bool
 sudoku m =
  domain (concat m) 1 9 &             -- define domain of all digits
- allC allDifferent m  &              -- all rows contain different digits
- allC allDifferent (transpose m)  &  -- all columns have different digits
- allC allDifferent (squares m) &     -- all 3x3 squares are different
+ all allDifferent m  &              -- all rows contain different digits
+ all allDifferent (transpose m)  &  -- all columns have different digits
+ all allDifferent (squares m) &     -- all 3x3 squares are different
  labeling [FirstFail] (concat m)
  where
   -- translate a matrix into a list of small 3x3 squares
