@@ -103,7 +103,7 @@ minimumFor external
 --- (f x) is minimal. The evaluation suspends if it contains
 --- unbound non-local variables.
 
-minimize :: (a -> Bool) -> (a -> Float) -> a -> Bool
+minimize :: Data a => (a -> Bool) -> (a -> Float) -> a -> Bool
 minimize g f x = minimumFor g f =:= x
 
 --- Computes the maximum with respect to a given constraint.
@@ -120,7 +120,7 @@ maximumFor external
 --- (f x) is maximal. The evaluation suspends if it contains
 --- unbound non-local variables.
 
-maximize :: (a -> Bool) -> (a -> Float) -> a -> Bool
+maximize :: Data a => (a -> Bool) -> (a -> Float) -> a -> Bool
 maximize g f x = maximumFor g f =:= x
 
 
