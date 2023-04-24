@@ -15,8 +15,8 @@
 	translateFD_Rel(FD_Rel,Rel),
 	sum(Vs,Rel,V), R='Prelude.True'.
 
-'CLPFD.prim_scalar_product'(Cs,Vs,RelCall,V,R) :-
-        checkSICStusAndWarn('CLPFD.scalar_product'),
+'CLPFD.prim_scalarProduct'(Cs,Vs,RelCall,V,R) :-
+        checkSICStusAndWarn('CLPFD.scalarProduct'),
 	RelCall=partcall(2,FD_Rel,[]),
 	translateFD_Rel(FD_Rel,Rel),
 	scalar_product(Cs,Vs,Rel,V), R='Prelude.True'.

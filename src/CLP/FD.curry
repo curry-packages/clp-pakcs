@@ -172,8 +172,8 @@ count v vs rel c = FDCount v vs rel c
 ---              upper bound of `x` (default).
 --- @cons Enum - Make a multiple choice for the selected variable for all the values
 ---              in its domain.
---- @cons Bisect - Make a binary choice between `x&lt;=#m` and
----                `x&gt;#m` for the selected variable
+--- @cons Bisect - Make a binary choice between `x<=#m` and
+---                `x>#m` for the selected variable
 ---                `x` where `m` is the midpoint
 ---                of the domain `x`
 ---                (also known as domain splitting).

@@ -3,18 +3,18 @@
 --- <p>
 --- The general structure of a specification of an FD problem is as follows:
 --- 
---- <code>domain_constraint & fd_constraint & labeling</code>
+---     domain_constraint & fd_constraint & labeling
 --- 
 --- where:
 --- 
---- <code>domain_constraint</code>
---- specifies the possible range of the FD variables (see constraint <code>domain</code>)
+--- `domain_constraint`
+--- specifies the possible range of the FD variables (see constraint `domain`)
 --- 
---- <code>fd_constraint</code>
+--- `fd_constraint`
 --- specifies the constraint to be satisfied by a valid solution
 --- (see constraints #+, #-, allDifferent, etc below)
 --- 
---- <code>labeling</code>
+--- `labeling`
 --- is a labeling function to search for a concrete solution.
 ---
 --- Note: This library is based on the corresponding library of Sicstus-Prolog
@@ -205,7 +205,7 @@ prim_sum external
 
 --- (scalarProduct cs vs relop v) is satisfied if ((cs*vs) relop v) is satisfied.
 --- The first argument must be a list of integers. The other arguments are as
---- in <code>sum</code>.
+--- in `sum`.
 scalarProduct :: [Int] -> [Int] -> (Int -> Int -> Bool) -> Int -> Bool
 scalarProduct cs vs rel v =
   seq (groundNormalForm cs)
@@ -219,7 +219,7 @@ prim_scalarProduct external
 --- (count v vs relop c) is satisfied if (n relop c), where n is the number of
 --- elements in the list of FD variables vs that are equal to v, is satisfied.
 --- The first argument must be an integer. The other arguments are as
---- in <code>sum</code>.
+--- in `sum`.
 count :: Int -> [Int] -> (Int -> Int -> Bool) -> Int -> Bool
 count v vs rel c =
   seq (ensureNotFree v)
@@ -238,7 +238,7 @@ prim_count external
 allDifferent :: [Int] -> Bool
 allDifferent vs = seq (normalForm (ensureSpine vs)) (prim_allDifferent vs)
 
---- For backward compatibility. Use <code>allDifferent</code>.
+--- For backward compatibility. Use `allDifferent`.
 all_different :: [Int] -> Bool
 all_different = allDifferent
 
@@ -270,7 +270,7 @@ prim_labeling :: [LabelingOption] -> [Int] -> Bool
 prim_labeling external
 
 --- This datatype contains all options to control the instantiated of FD variables
---- with the enumeration constraint <code>labeling</code>.
+--- with the enumeration constraint `labeling`.
 --- @cons LeftMost - The leftmost variable is selected for instantiation (default)
 --- @cons FirstFail - The leftmost variable with the smallest domain is selected
 ---                   (also known as first-fail principle)
@@ -278,16 +278,16 @@ prim_labeling external
 ---                              and the most constraints on it is selected.
 --- @cons Min - The leftmost variable with the smalled lower bound is selected.
 --- @cons Max - The leftmost variable with the greatest upper bound is selected.
---- @cons Step - Make a binary choice between <code>x=#b</code> and
----              <code>x/=#b</code> for the selected variable
----              <code>x</code> where <code>b</code> is the lower or
----              upper bound of <code>x</code> (default).
+--- @cons Step - Make a binary choice between `x=#b` and
+---              `x/=#b` for the selected variable
+---              `x` where `b` is the lower or
+---              upper bound of `x` (default).
 --- @cons Enum - Make a multiple choice for the selected variable for all the values
 ---              in its domain.
---- @cons Bisect - Make a binary choice between <code>x&lt;=#m</code> and
----                <code>x&gt;#m</code> for the selected variable
----                <code>x</code> where <code>m</code> is the midpoint
----                of the domain <code>x</code>
+--- @cons Bisect - Make a binary choice between `x<=#m` and
+---                `x>#m` for the selected variable
+---                `x` where `m` is the midpoint
+---                of the domain `x`
 ---                (also known as domain splitting).
 --- @cons Up - The domain is explored for instantiation in ascending order (default).
 --- @cons Down - The domain is explored for instantiation in descending order.
