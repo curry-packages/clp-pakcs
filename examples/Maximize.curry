@@ -30,5 +30,5 @@ max3 a b c =
 
 
 -- Testing:
-testMax4 :: Prop
-testMax4 = always $ abs (max2 - 310) < 0.01
+testMax2 :: Prop
+testMax2 = always $ abs (max2 - 310) < 0.01
