@@ -23,13 +23,14 @@ mortgage p t ir r b | t > 1              -- lifetime more than 1 month?
 exPayment :: CFloat
 exPayment = let r free in mortgage 100000 180 0.01 r 0 &> r
 
-ex1 :: String
-ex1 = let r free in mortgage 100000 180 0.01 r 0 &> show r
+ex1 :: Float
+ex1 = let r free in mortgage 100000 180 0.01 r 0 &> toFloat r
 
 -- Compute time to amortize mortage (use ":set +first" here!):
-ex2 :: String
-ex2 = let time free in mortgage 100000 time 0.01 1400 0 &> show time
+ex2 :: Float
+ex2 = let time free in mortgage 100000 time 0.01 1400 0 &> toFloat time
 
 
 -- Testing:
+testMG :: Prop
 testMG = always $ abs (exPayment - 1200.168) < 0.01

@@ -2,7 +2,7 @@
 --- Library for constraint programming with arithmetic constraints over reals.
 ---
 --- @author Michael Hanus
---- @version December 2020
+--- @version July 2023
 ------------------------------------------------------------------------------
 
 module CLP.R(CFloat, minimumFor, minimize, maximumFor, maximize) where
@@ -50,6 +50,10 @@ instance Fractional CFloat where
   x / y = x /. y
 
   fromFloat x = CF x
+
+--- The `Real` instance of `CFloat` provides the conversion operation `toFloat`.
+instance Real CFloat where
+  toFloat (CF x) = x
 
 --- Addition on floats in arithmetic constraints.
 
@@ -131,16 +135,17 @@ prim_CLPR_i2f external
 --- (f x) is minimal. The evaluation fails if such a minimal value
 --- does not exist. The evaluation suspends if it contains
 --- unbound non-local variables.
+minimumFor :: (a -> Bool) -> (a -> CFloat) -> a
+minimumFor g f = prim_minimumFor g (toFloat . f)
 
-minimumFor :: (a -> Bool) -> (a -> Float) -> a
-minimumFor external
+prim_minimumFor :: (a -> Bool) -> (a -> Float) -> a
+prim_minimumFor external
 
 --- Minimization constraint.
 --- (minimize g f x) is satisfied if (g x) is satisfied and
 --- (f x) is minimal. The evaluation suspends if it contains
 --- unbound non-local variables.
-
-minimize :: Data a => (a -> Bool) -> (a -> Float) -> a -> Bool
+minimize :: Data a => (a -> Bool) -> (a -> CFloat) -> a -> Bool
 minimize g f x = minimumFor g f =:= x
 
 --- Computes the maximum with respect to a given constraint.
@@ -148,16 +153,17 @@ minimize g f x = minimumFor g f =:= x
 --- (f x) is maximal. The evaluation fails if such a maximal value
 --- does not exist. The evaluation suspends if it contains
 --- unbound non-local variables.
+maximumFor :: (a -> Bool) -> (a -> CFloat) -> a
+maximumFor g f = prim_maximumFor g (toFloat . f)
 
-maximumFor :: (a -> Bool) -> (a -> Float) -> a
-maximumFor external
+prim_maximumFor :: (a -> Bool) -> (a -> Float) -> a
+prim_maximumFor external
 
 --- Maximization constraint.
 --- (maximize g f x) is satisfied if (g x) is satisfied and
 --- (f x) is maximal. The evaluation suspends if it contains
 --- unbound non-local variables.
-
-maximize :: Data a => (a -> Bool) -> (a -> Float) -> a -> Bool
+maximize :: Data a => (a -> Bool) -> (a -> CFloat) -> a -> Bool
 maximize g f x = maximumFor g f =:= x
 
 

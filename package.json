@@ -14,7 +14,7 @@
     },
     "testsuite": {
         "src-dir": "examples",
-        "modules": [ "Mortgage", "SMM" ]
+        "modules": [ "Mortgage", "SMM", "Maximize" ]
     },
     "license": "BSD-3-Clause",
     "licenseFile": "LICENSE",

@@ -4,7 +4,7 @@
  <primitive name="minimumFor" arity="2">
   <entry>prim_minimumFor[raw]</entry>
  </primitive>
- <primitive name="maximumFor" arity="2">
+ <primitive name="prim_maximumFor" arity="2">
   <entry>prim_maximumFor[raw]</entry>
  </primitive>
 </primitives>

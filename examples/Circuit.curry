@@ -20,7 +20,7 @@ cvi (Parallel c1 c2) v i =
 
 
 -- cvi (Series (Resistor 180.0) (Resistor 470.0)) 5.0 i where i free
--- i = 0.007692307692307693
+-- i = CF 0.007692307692307693
 
 -- let i free in cvi (Series (Resistor 180) (Resistor 470)) 5 i &> print i
 -- 0.007692307692307693
