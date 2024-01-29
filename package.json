@@ -1,12 +1,11 @@
 {
     "name": "clp-pakcs",
-    "version": "3.0.0",
+    "version": "3.2.0",
     "author": "Michael Hanus <mh@informatik.uni-kiel.de>",
     "synopsis": "CLP libraries for PAKCS",
     "category": [ "Constraints" ],
     "dependencies": {
-        "base"      : ">= 3.0.0, < 4.0.0",
-        "searchtree": ">= 3.0.0, < 4.0.0"
+        "base"      : ">= 3.2.0, < 4.0.0"
     },
     "exportedModules": [ "CLP.FD", "CLP.R" ],
     "compilerCompatibility": {
@@ -19,7 +18,7 @@
     "license": "BSD-3-Clause",
     "licenseFile": "LICENSE",
     "source": {
-        "git": "https://git.ps.informatik.uni-kiel.de/curry-packages/clp-pakcs.git",
+        "git": "https://github.com/curry-packages/clp-pakcs.git",
         "tag": "$version"
     }
 }
